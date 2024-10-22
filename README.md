@@ -44,7 +44,7 @@ The model is defined in `trainer.py` and `gnn.py`.
 This project is licensed under the MIT License.
 
 ## Citation
-please kindly cite this paper if our MLGNN can give you any inspiration for your research, thanks a lot.
+Please kindly cite this paper if our MLGNN can give you any inspiration for your research, thanks a lot.
 
 ## Contact
 
