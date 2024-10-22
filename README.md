@@ -2,6 +2,7 @@
 
 MLGNN is a optimization-based meta-learning method designed typically designed for graph neural network for few-shot learning.
 This meta-learning method is a task set-based method which not only devide the dataset into tasks but also construct task sets for efficient tarining.
+This code is constructed based on Graph Neural Network For Few-shot Learning, whose pytorch implementation is https://github.com/ylsung/gnn_few_shot_cifar100, which in our paper serves as the baseline.
 
 ## Usage
 
