@@ -5,7 +5,7 @@ This repository provides the official implementation of MLGNN proposed in our wo
 
 ---
 
-> Few-shot Learning (FSL) challenges deep learning models to adapt to novel categories with minimal supervision. MLGNN introduces a novel meta-learning framework specifically designed for Graph Neural Networks (GNNs), enabling effective knowledge transfer through task-set based episodic training. Our approach features dual embedding networks for 1D/2D data processing and optimized task construction strategies. Experimental results demonstrate MLGNN's superior performance on HRRP and GAF datasets, achieving 8.72% improvement in 5-way 1-shot accuracy compared to baseline methods.
+> Few-shot Learning (FSL) challenges deep learning models to adapt to novel categories with minimal supervision. MLGNN introduces a novel meta-learning framework specifically designed for Graph Neural Networks (GNNs), enabling effective knowledge transfer through task-set based episodic training. To efficiently utilize the target information from HRRP samples under few-shot scenario, our solution brings a new mindset to take both inner-sample and inter-sample information into consideration. More importantly, we have proposed a novel task set-based meta learning method for GNN, which further enhances the generalization ability of the model.
 
 <p align="center">
   <img src="abstract.jpg" width="40%">
