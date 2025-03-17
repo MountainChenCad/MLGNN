@@ -1,53 +1,88 @@
-# MLGNN
 
-MLGNN (Meta-Learning for Graph Neural Network) is a optimization-based meta-learning method designed typically designed for graph neural network for few-shot learning.
-This meta-learning method is a task set-based method which not only devide the dataset into tasks but also construct task sets for efficient tarining.
-This code is constructed based on Graph Neural Network For Few-shot Learning, whose pytorch implementation is https://github.com/ylsung/gnn_few_shot_cifar100, which in our paper serves as the baseline.
 
-## Usage
+# MLGNN: Meta-Learning for Graph Neural Networks :zap:
+This repository provides the official implementation of MLGNN proposed in our work *Meta-Learning for Graph Neural Networks in Few-shot Learning*.
 
-To train and test the model, run `main.py`.
-To set the training hyper-parameters turn to `argument.py`.
-Here, you may choose the dataset to be either `gaf12` or `hrrp3`, which will lead to dataloader of gaf/hrrp respectively.
-Furthermore, if you choose `gaf12`, then in `trainer.py` you change the code in class `gnnModel` as:
+---
+
+> Few-shot Learning (FSL) challenges deep learning models to adapt to novel categories with minimal supervision. MLGNN introduces a novel meta-learning framework specifically designed for Graph Neural Networks (GNNs), enabling effective knowledge transfer through task-set based episodic training. Our approach features dual embedding networks for 1D/2D data processing and optimized task construction strategies. Experimental results demonstrate MLGNN's superior performance on HRRP and GAF datasets, achieving 8.72% improvement in 5-way 1-shot accuracy compared to baseline methods.
+
+<p align="center">
+  <img src="./abstract.png" width="65%">
+</p>
+
+---
+
+## Platform :pushpin:
+Developed and tested on PyCharm IDE with Conda environment. Recommended OS:
+- Ubuntu 20.04+ 
+- Windows 10/11 (WSL2 recommended)
+
+---
+
+## Dependencies :wrench:
+```angular2html
+conda create -n mlgnn python=3.8
+conda activate mlgnn
+pip install torch==2.2.0 torchvision==0.17.0
+pip install scikit-learn==1.2.2 networkx==3.1
 ```
-        self.cnn_feature = EmbeddingCNN2D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
-```
-On the other hand, if you choose `hrrp3`, then you should change the code to:
-```
-        self.cnn_feature = EmbeddingCNN1D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
-```
-That is because hrrp is 1-D and gaf is 2-D, thereby different embedding network is needed.
 
-## Dependencies
-- Python 3.8
-- PyTorch 2.2.0
+---
 
-## Dataset
-
-The dataset should be organized in the `train/` directory with the following structure:
-
-```
+## Dataset Structure :file_folder:
+Prepare your data with following structure:
+```bash
 data/
 ├── hrrp3/
-  └── train/
+│   └── train/
+│       ├── class_1/
+│       └── class_2/
 └── gaf12/
-  └── train/
+    └── train/
+        ├── category_a/
+        └── category_b/
 ```
 
-## Model
+---
 
-The model is defined in `trainer.py` and `gnn.py`.
+## Quick Start :rocket:
+1. **Configure dataset** in `argument.py`:
+```python
+DATASET = 'gaf12'  # or 'hrrp3'
+```
 
-## License
+2. **Select embedding architecture** in `trainer.py`:
+```python
+# For 2D GAF data
+self.cnn_feature = EmbeddingCNN2D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
 
-This project is licensed under the MIT License.
+# For 1D HRRP data 
+self.cnn_feature = EmbeddingCNN1D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
+```
 
-## Citation
-Please kindly cite this paper if our MLGNN can give you any inspiration for your research, thanks a lot.
+3. **Launch training**:
+```bash
+python main.py --dataset gaf12 --num_episodes 1000 --shot_num 5
+```
 
-## Contact
+---
 
-Lingfeng Chen
+## Core Components :triangular_flag_on_post:
+- `gnn.py`: Implements the graph neural network architecture.
+- `trainer.py`: Contains training loop and meta-learning logic.
+- `dataloader/`: Handles task generation and data processing.
+- `utils/`: Includes visualization tools and metric calculators.
 
-Email: chenlingfeng@nudt.edu.cn
+---
+
+## License :page_facing_up:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Contact :email:
+**Lingfeng Chen**  
+:office: National University of Defense Technology  
+:e-mail: [chenlingfeng@nudt.edu.cn](mailto:chenlingfeng@nudt.edu.cn)  
+:globe_with_meridians: [Personal Homepage](http://lingfengchen.cn/)  
