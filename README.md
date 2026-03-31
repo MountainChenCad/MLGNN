@@ -1,9 +1,15 @@
-
-
 # MLGNN: Meta-Learning for Graph Neural Networks :zap:
-This repository provides the official implementation of MLGNN proposed in our work *Meta-Learning for Graph Neural Networks in Few-shot Learning*.
+
+<div align="right">
+  <a href="#english">English</a> | <a href="#chinese">中文</a>
+</div>
 
 ---
+
+<a name="english"></a>
+## English
+
+This repository provides the official implementation of MLGNN proposed in our work *Meta-Learning for Graph Neural Networks in Few-shot Learning*.
 
 > Few-shot Learning (FSL) challenges deep learning models to adapt to novel categories with minimal supervision. MLGNN introduces a novel meta-learning framework specifically designed for Graph Neural Networks (GNNs), enabling effective knowledge transfer through task-set based episodic training. To efficiently utilize the target information from HRRP samples under few-shot scenario, our solution brings a new mindset to take both inner-sample and inter-sample information into consideration. More importantly, we have proposed a novel task set-based meta learning method for GNN, which further enhances the generalization ability of the model.
 
@@ -13,15 +19,17 @@ This repository provides the official implementation of MLGNN proposed in our wo
 
 ---
 
-## Platform :pushpin:
+### Platform :pushpin:
+
 Developed and tested on PyCharm IDE with Conda environment. Recommended OS:
 - Ubuntu 20.04+ 
 - Windows 10/11 (WSL2 recommended)
 
 ---
 
-## Dependencies :wrench:
-```angular2html
+### Dependencies :wrench:
+
+```bash
 conda create -n mlgnn python=3.8
 conda activate mlgnn
 pip install torch==2.2.0 torchvision==0.17.0
@@ -30,7 +38,8 @@ pip install scikit-learn==1.2.2 networkx==3.1
 
 ---
 
-## Dataset Structure :file_folder:
+### Dataset Structure :file_folder:
+
 Prepare your data with following structure:
 ```bash
 data/
@@ -46,7 +55,8 @@ data/
 
 ---
 
-## Quick Start :rocket:
+### Quick Start :rocket:
+
 1. **Configure dataset** in `argument.py`:
 ```python
 DATASET = 'gaf12'  # or 'hrrp3'
@@ -68,7 +78,8 @@ python main.py --dataset gaf12 --num_episodes 1000 --shot_num 5
 
 ---
 
-## Core Components :triangular_flag_on_post:
+### Core Components :triangular_flag_on_post:
+
 - `gnn.py`: Implements the graph neural network architecture.
 - `trainer.py`: Contains training loop and meta-learning logic.
 - `dataloader/`: Handles task generation and data processing.
@@ -76,13 +87,119 @@ python main.py --dataset gaf12 --num_episodes 1000 --shot_num 5
 
 ---
 
-## License :page_facing_up:
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<a name="chinese"></a>
+## 中文
+
+本仓库提供了我们工作中提出的 MLGNN 的官方实现 *Meta-Learning for Graph Neural Networks in Few-shot Learning*。
+
+> 少样本学习（FSL）挑战深度学习模型用最少的监督适应新类别。MLGNN 引入了一种专门为图神经网络（GNN）设计的新型元学习框架，通过基于任务集的 episode 训练实现有效的知识迁移。为了在少样本场景下高效利用 HRRP 样本的目标信息，我们的解决方案带来了一种新的思维方式，同时考虑样本内信息和样本间信息。更重要的是，我们提出了一种新颖的基于任务集的 GNN 元学习方法，进一步增强了模型的泛化能力。
+
+<p align="center">
+  <img src="abstract.jpg" width="40%">
+</p>
 
 ---
 
-## Contact :email:
+### 平台 :pushpin:
+
+在 PyCharm IDE 和 Conda 环境中开发和测试。推荐的操作系统：
+- Ubuntu 20.04+ 
+- Windows 10/11（推荐使用 WSL2）
+
+---
+
+### 依赖 :wrench:
+
+```bash
+conda create -n mlgnn python=3.8
+conda activate mlgnn
+pip install torch==2.2.0 torchvision==0.17.0
+pip install scikit-learn==1.2.2 networkx==3.1
+```
+
+---
+
+### 数据集结构 :file_folder:
+
+按以下结构准备您的数据：
+```bash
+data/
+├── hrrp3/
+│   └── train/
+│       ├── class_1/
+│       └── class_2/
+└── gaf12/
+    └── train/
+        ├── category_a/
+        └── category_b/
+```
+
+---
+
+### 快速开始 :rocket:
+
+1. **在 `argument.py` 中配置数据集**：
+```python
+DATASET = 'gaf12'  # 或 'hrrp3'
+```
+
+2. **在 `trainer.py` 中选择嵌入架构**：
+```python
+# 用于 2D GAF 数据
+self.cnn_feature = EmbeddingCNN2D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
+
+# 用于 1D HRRP 数据 
+self.cnn_feature = EmbeddingCNN1D(image_size, cnn_feature_size, cnn_hidden_dim, cnn_num_layers)
+```
+
+3. **启动训练**：
+```bash
+python main.py --dataset gaf12 --num_episodes 1000 --shot_num 5
+```
+
+---
+
+### 核心组件 :triangular_flag_on_post:
+
+- `gnn.py`：实现图神经网络架构。
+- `trainer.py`：包含训练循环和元学习逻辑。
+- `dataloader/`：处理任务生成和数据处理。
+- `utils/`：包括可视化工具和指标计算器。
+
+---
+
+## Citation / 引用
+
+If you find our work useful in your research, please consider citing:
+
+如果您在研究中觉得我们的工作有用，请考虑引用：
+
+```bibtex
+@ARTICLE{11393636,
+  author={Chen, Lingfeng and Hu, Panhe and Liu, Qi and Liu, Zhen},
+  journal={IEEE Transactions on Signal and Information Processing over Networks}, 
+  title={GAF-MLGNN: An Efficient Meta-Learning Framework for Few-Shot HRRP RATR With GNN}, 
+  year={2026},
+  volume={12},
+  number={},
+  pages={341-356},
+  keywords={Graph neural networks;Metalearning;Overfitting;Scattering;Measurement;Training;Radar scattering;Information processing;Target recognition;Synthetic aperture radar;High resolution range profiles (HRRPs);model-agnostic meta-learning (MAML);gramian angular field (GAF);graph neural network (GNN);few-shot learning (FSL)},
+  doi={10.1109/TSIPN.2026.3663887}}
+```
+
+---
+
+## License / 许可证 :page_facing_up:
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+本项目基于 MIT 许可证发布 - 详情请参见 [LICENSE](LICENSE) 文件。
+
+---
+
+## Contact / 联系方式 :email:
+
 **Lingfeng Chen**  
-:office: National University of Defense Technology  
+:office: National University of Defense Technology / 国防科技大学  
 :e-mail: [chenlingfeng@nudt.edu.cn](mailto:chenlingfeng@nudt.edu.cn)  
-:globe_with_meridians: [Personal Homepage](http://lingfengchen.cn/)  
+:globe_with_meridians: [Personal Homepage / 个人主页](http://lingfengchen.cn/)
