@@ -1,4 +1,4 @@
-# MLGNN: Meta-Learning for Graph Neural Networks, TSIPN_2026
+# MLGNN: Meta-Learning for Graph Neural Networks, IEEE_TSIPN_2026
 
 <div align="right">
   <a href="#english">English</a> | <a href="#chinese">中文</a>
