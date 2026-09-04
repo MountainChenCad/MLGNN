@@ -9,7 +9,12 @@
 <a name="english"></a>
 ## English
 
-This repository provides the official implementation of MLGNN proposed in our work *Meta-Learning for Graph Neural Networks in Few-shot Learning*.
+# MLGNN: Meta-Learning for Graph Neural Networks :zap:
+This repository provides the official implementation of **GAF-MLGNN**, published in **IEEE Transactions on Signal and Information Processing over Networks (TSIPN), vol. 12, 2026** ([DOI: 10.1109/TSIPN.2026.3663887](https://doi.org/10.1109/TSIPN.2026.3663887)).
+
+> **One-sentence summary:** GAF-MLGNN combines task-set-based meta-learning for graph neural networks with Gramian angular field (GAF) image representations, so that few-shot HRRP (high-resolution range profile) radar recognition exploits **both intra-sample structure and inter-sample relations** at the same time — improving generalization to unseen target classes with only a handful of labeled samples.
+
+---
 
 > Few-shot Learning (FSL) challenges deep learning models to adapt to novel categories with minimal supervision. MLGNN introduces a novel meta-learning framework specifically designed for Graph Neural Networks (GNNs), enabling effective knowledge transfer through task-set based episodic training. To efficiently utilize the target information from HRRP samples under few-shot scenario, our solution brings a new mindset to take both inner-sample and inter-sample information into consideration. More importantly, we have proposed a novel task set-based meta learning method for GNN, which further enhances the generalization ability of the model.
 
@@ -19,17 +24,15 @@ This repository provides the official implementation of MLGNN proposed in our wo
 
 ---
 
-### Platform :pushpin:
-
+## Platform :pushpin:
 Developed and tested on PyCharm IDE with Conda environment. Recommended OS:
 - Ubuntu 20.04+ 
 - Windows 10/11 (WSL2 recommended)
 
 ---
 
-### Dependencies :wrench:
-
-```bash
+## Dependencies :wrench:
+```angular2html
 conda create -n mlgnn python=3.8
 conda activate mlgnn
 pip install torch==2.2.0 torchvision==0.17.0
@@ -38,8 +41,7 @@ pip install scikit-learn==1.2.2 networkx==3.1
 
 ---
 
-### Dataset Structure :file_folder:
-
+## Dataset Structure :file_folder:
 Prepare your data with following structure:
 ```bash
 data/
@@ -55,8 +57,7 @@ data/
 
 ---
 
-### Quick Start :rocket:
-
+## Quick Start :rocket:
 1. **Configure dataset** in `argument.py`:
 ```python
 DATASET = 'gaf12'  # or 'hrrp3'
@@ -78,12 +79,44 @@ python main.py --dataset gaf12 --num_episodes 1000 --shot_num 5
 
 ---
 
-### Core Components :triangular_flag_on_post:
-
+## Core Components :triangular_flag_on_post:
 - `gnn.py`: Implements the graph neural network architecture.
 - `trainer.py`: Contains training loop and meta-learning logic.
 - `dataloader/`: Handles task generation and data processing.
 - `utils/`: Includes visualization tools and metric calculators.
+
+---
+
+## Citation :bookmark:
+
+If you use MLGNN in your research on few-shot radar target recognition, graph meta-learning, or HRRP recognition, please cite the published journal version:
+
+```bibtex
+@article{chen2026gafmlgnn,
+  author  = {Chen, Lingfeng and Hu, Panhe and Liu, Qi and Liu, Zhen},
+  title   = {{GAF-MLGNN}: An Efficient Meta-Learning Framework for Few-Shot {HRRP} {RATR} With {GNN}},
+  journal = {IEEE Transactions on Signal and Information Processing over Networks},
+  year    = {2026},
+  volume  = {12},
+  pages   = {341-356},
+  doi     = {10.1109/TSIPN.2026.3663887}
+}
+```
+
+Related work from our group: [HRRPLLM](https://doi.org/10.1109/LSP.2025.3598220) achieves training-free one-shot HRRP recognition with LLMs; a full paper catalog is available in the [HRRP Evidence Hub](https://github.com/MountainChenCad/hrrp-citation-agent-lab).
+
+---
+
+## License :page_facing_up:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Contact :email:
+**Lingfeng Chen**  
+:office: National University of Defense Technology  
+:e-mail: [chenlingfeng@nudt.edu.cn](mailto:chenlingfeng@nudt.edu.cn)  
+:globe_with_meridians: [Personal Homepage](http://lingfengchen.cn/)  
 
 ---
 
